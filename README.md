@@ -94,7 +94,7 @@ values. In algebra, however, variables are only placeholders for numbers. In
 Ruby, a variable can point to almost any type of value including numbers,
 strings, arrays, and hashes.
 
-### A Variable Has a Name
+## A Variable Has a Name
 
 ```ruby
 i
@@ -145,7 +145,7 @@ like. It is often helpful, especially when working in a collaborative setting,
 to make sure your variable names are descriptive and indicative of what they are
 storing.
 
-### A Variable has a Value That Can Be Changed
+## A Variable has a Value That Can Be Changed
 
 A variable's name is like a label on a container. Its value is what is stored
 inside that container. The name points to the value. Above, `president`
@@ -169,7 +169,7 @@ Notice that the final equation, `first_number + second_number`, didn't change.
 With variables, we are able to assign and change the value without having to
 change the name.
 
-### A Variable has a Type That Can Be Changed As Well
+## A Variable has a Type That Can Be Changed As Well
 
 A variable's type is the type of the value it holds. Ruby is what is known as a
 _dynamically typed_ language. That means the value of a variable can change its
