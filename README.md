@@ -1,23 +1,67 @@
 # Introduction to Variables
 
-## Objectives
+## Learning Goals
 
-1. Define a variable.
-2. Create and reassign variables.
-3. Define pass-by-value as it relates to variables.
+- Define a variable.
+- Create and reassign variables.
+- Define pass-by-value as it relates to variables.
 
-## Video
+## Introduction
 
-<iframe width="960" height="720" src="https://www.youtube.com/embed/FsVYkcOoI8Y?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+In the previous lesson, we learned about the different data types we can
+use to represent information. We could, for instance, write the number
+10, and Ruby will recognize it as an Integer:
 
-[Download MP4](http://learn-co-videos.s3.amazonaws.com/ruby/about-variables-ruby.mp4)
+```ruby
+10
+# => 10
+10.class
+# => Integer
+```
 
-This video is meant as optional supplemental material to augment the written curriculum. If you feel you already understand variables, you are welcome to skip the video and continue forward. Feel free to come back here if you ever want a review.
+We know that the Integer class has a variety of built in methods we can use on
+the number, just as all data type classes do:
 
-If you would like to code along you can use: [repl.it](https://repl.it/).
+```ruby
+10.even?
+# => true
+```
 
-## Variables in Ruby
-Let's dive right in:
+This is cool, but limited in functionality. We cannot reuse the value, `10`,
+that we've written. We can't access it later.
+
+Variables solve this problem. With variables, we can store data like numbers in
+barewords, allowing us to access them later. In this lesson, we're going to
+introduce variables and some examples of how they are used. Use IRB in the
+terminal or Learn's IDE to follow along.
+
+## Define a Variable
+
+Variables are barewords that we define by assigning a value. Most often, values
+are data types. We assign variables by writing their name followed by an equals
+sign and the value we want to assign:
+
+```ruby
+first_number = 7
+# => 7
+
+second_number = 14
+# => 14
+
+name = "Tzvi"
+# => "Tzvi"
+```
+
+By assigning variables, we can access this data later by writing the variable
+name instead of the value itself:
+
+```ruby
+second_number
+# => 14
+```
+
+Variables represent their values in our code. For instance, two variables
+assigned to numbers can be added together, just like the numbers themselves:
 
 ```ruby
 first_number = 7
@@ -27,23 +71,30 @@ sum = first_number + second_number
 
 puts sum
 ```
+
 The code above will print '21'.
 
+Variables are a tool for storing and using data in our programs. We tell our
+computer to set aside some space to hold that information so we can retrieve it
+later. A variable is the location where the information resides, when we need it
+we know just where to look.
+
+Another example using a string:
+
 ```ruby
-current_president = "Barack Obama"
-puts "In 2016, the president was #{current_president}."
+president = "Barack Obama"
+puts "In 2016, the US president was " + president
 ```
-This code will print `In 2016, the president was Barack Obama.`.
 
-> Note: The syntax of `#{current_president}` simply injects the value of the variable `current_president` into the string. This is called [Interpolation](http://stackoverflow.com/questions/10076579/string-concatenation-vs-interpolation-in-ruby) and we'll cover it later -- in this case, you can think of it as `"In 2016, the president was " + current_president + "."` where you are simply adding together multiple strings.
+The above code will print `In 2016, the US president was Barack Obama`.
 
-`first_number`, `second_number`, `sum`, and `current_president` are all **variables**.  Much like in math, variables are words or characters that hold values. In algebra, however, variables are only placeholders for numbers. In Ruby, a variable can point to almost any type of value including numbers, strings, arrays, and hashes.
+`first_number`, `second_number`, `name`, `sum`, and `president` are all
+**variables**. Much like in math, variables are words or characters that hold
+values. In algebra, however, variables are only placeholders for numbers. In
+Ruby, a variable can point to almost any type of value including numbers,
+strings, arrays, and hashes.
 
-## What is a Variable
-
-As the examples above show, variables allow us to store information. We tell our computer to set aside some space to hold that information so we can retrieve it later. A variable is the location where the information resides, when we need it we know just where to look.
-
-#### A Variable has a Name
+### A Variable Has a Name
 
 ```ruby
 i
@@ -56,101 +107,141 @@ FIRST_NAME
 age
 longest_word
 ```
-These would all be valid variable names in Ruby. They would not all be good variable names. There is strong convention among Rubyists to use what is known as *snake case* `this_is_an_example_of_snake_case` words are separated by underscores.  This is opposed to *camel case*
-`thisIsAnExampleOfCamelCase` where upcased characters indicate word breaks.
 
-Variable names should start with a lowercase letter. A variable that begins with an uppercase letter is known as a **constant** and has different characteristics.
+These would all be valid variable names in Ruby. They would not all be good
+variable names. There is strong convention among Rubyists to use what is known
+as _snake case_:
+
+```ruby
+this_is_an_example_of_snake_case = 100
+```
+
+In snake case, words are separated by underscores. This is opposed to _camel
+case_, where upcased characters indicate word breaks:
+
+```ruby
+thisIsAnExampleOfCamelCase = false
+```
+
+Variable names should start with a lowercase letter. A variable that begins with
+an uppercase letter is known as a [**constant**][constant] and has different
+characteristics.
 
 There are also some rules that mark invalid variable names:
 
 ```ruby
-# X Invalid X
+# Invalid Names
 1st_place
 end
-danny's_age   
+second place
+third!place
 ```
 
-A Ruby variable cannot start with a number, be a Ruby reserved word, or have punctuation or space characters.
+A Ruby variable cannot start with a number, be a Ruby reserved word, or have
+punctuation or space characters.
 
-#### A Variable has a Value
+Besides these restrictions, we are free to name variables whatever we would
+like. It is often helpful, especially when working in a collaborative setting,
+to make sure your variable names are descriptive and indicative of what they are
+storing.
 
-A variable's name is like a label on a container. Its value is what is stored inside that container. The name points to the value. Above, `current_president` holds onto the value "Barack Obama" and `first_number` has the value of the number 7. As we will see, the value of a variable can change even when its name stays the same.
+### A Variable has a Value That Can Be Changed
 
-#### A Variable has a Type
+A variable's name is like a label on a container. Its value is what is stored
+inside that container. The name points to the value. Above, `president`
+holds onto the value "Barack Obama" and `first_number` has the value of the
+number 7.
 
-A variable's type is the type of the value it holds. Ruby is what is known as a *dynamically typed* language. That means the value of a variable can change its type and does not need to be explicitly and permanently defined. There is nothing stopping you from changing the value of `sum`, which now is the number 21, to the string "whatever I want". 
-
-It is also a *strongly typed* language. This means a variable will never be automatically *coerced* to another type without you explicitly changing the type. Adding two numbers will return a number, 2 + 2 returns 4; adding two strings will return a string, "2" + "2" returns "22"; adding a number and a string will raise an error, 2 + "2" raises a `TypeError`.
-
-When you are building larger programs it is important to have in mind the type of the value that a variable refers to.
-
-## Creating Variables
-
-Variables are assigned values using `=` ("equal sign"), called the assignment operator.
+We can reassign the value of variables as needed:
 
 ```ruby
-current_president = "Barack Obama"
-puts "In 2016, the president was #{current_president}."
+first_number = 7
+second_number = 14
+
+
+
+first_number = 10
+sum = first_number + second_number
+# => 24
 ```
 
-## Reassigning Variables
+Notice that the final equation, `first_number + second_number`, didn't change.
+With variables, we are able to assign and change the value without having to
+change the name.
 
-Now the variable `current_president` is equal to the string Barack Obama. Let's say somehow Stephen Colbert got elected as president in the 2016 election. To update `current_president`, you would just reassign the variable much in the same way that you first defined it:
+### A Variable has a Type That Can Be Changed As Well
+
+A variable's type is the type of the value it holds. Ruby is what is known as a
+_dynamically typed_ language. That means the value of a variable can change its
+type and does not need to be explicitly and permanently defined. There is
+nothing stopping you from changing the value of `sum`, which now is the number
+24, to the string "whatever I want".
 
 ```ruby
-current_president = "Barack Obama"
-puts "In 2016, the president was #{current_president}."
+sum
+# => 24
+sum.class
+# => Integer
 
-current_president = "Stephen Colbert"
-puts "Now, it being the year 2017, the president is #{current_president}."
-```
-This will print out:  
-
-```
-In 2016, the president was Barack Obama.
-Now, it being the year 2017, the president is Stephen Colbert.
+sum = "whatever I want"
+# => "whatever I want"
+sum.class
+# => String
 ```
 
-## Variable Example
+Ruby is also a _strongly typed_ language. This means a variable will never be
+automatically _coerced_ to another type without you explicitly changing the
+type.
 
-Within this repository is a file named `variables.rb` with some examples you can read and play with. [Download the Source Files](https://github.com/learn-co-curriculum/variable-readme/archive/1.0.0.zip) for this lesson to see how it behaves.
+- Adding two numbers will return a number: `2 + 2` returns `4`
+- Adding two strings will return a string: `"2" + "2"` returns `"22"`
+- Adding a number and a string **will raise an error**: `2 + "2"` raises a `TypeError`.
+
+When you are building larger programs it is important to have in mind the type
+of the value that a variable refers to.
+
+## Variables Allow Us To Write Abstractly
+
+Variable names can remain the same while their _values_ change. This enables a
+powerful programming tool: abstraction.
+
+When we write:
 
 ```ruby
-'This is data, it is a string. Strings start and end with  " '
+first_number = 7
+second_number = 14
 
-"Part of being data, or a string, is that ruby doesn't interpret it."
-
-puts 1+1
-puts "1+1"
-
-example = "The word 'example' is equal to this sentence, it's a named variable."
-
-puts example
-puts example
-puts example
-
-puts "variables are any previously undefined word that"
-puts "starts with a lowercase letter."
+sum = first_number + second_number
 ```
 
-Running this file will print:
+..we are defining a calculation without having to be explicit in what the values
+are. We've _abstracted_ the process away from the concrete data. If all we were
+doing was adding 7 and 14, we could accomplish that in a single line. But here,
+we've created a reusable _adding machine_. This example may seem trivial, but
+we can create much more complicated processes, all without having to know the
+exact data we're working with.
 
-```
-2
-1+1
-The word 'example' is equal to this sentence, it's a named variable.
-The word 'example' is equal to this sentence, it's a named variable.
-The word 'example' is equal to this sentence, it's a named variable.
-variables are any previously undefined word that
-starts with a lowercase letter.
-```
+## Conclusion
 
-## Bonus: 'Pass-By-Value'
+Variables play a critical role in programming. They allow us to store data at a
+particular location and retrieve it later. Variables can be reassigned as
+needed, and can even change their data type in Ruby. There are some conventions
+we try to follow to make our code easier to understand, such as using
+`snake_case` as opposed to `camelCase`. Variables allow us to write complex
+processes without having to deal with the concrete data directly.
 
-We have seen that the variable itself, the location where information is stored, is distinct from the value stored at that location. Let's try something out to demonstrate this. We'll first declare a new variable with an original value, then do something to change that value, and finally we'll take a peek at our variable again.
+## Bonus: Pass-By-Value
+
+We have seen that the variable itself, the location where information is stored,
+is distinct from the value stored at that location. The variable `first_number`
+can change value as needed without changing its name. Let's try something out to
+demonstrate this.
+
+First, we will declare a new variable with an original value, then do something
+to change that value, and finally we'll take a peek at our variable again. Open
+up IRB to follow along:
 
 ```ruby
-# Open up IRB and follow along
 sound = "squeak"
 
 # We can peek at the value of sound by typing its name
@@ -160,7 +251,9 @@ sound
 sound.upcase
 # => "SQUEAK"
 ```
-Ok, the moment of suspense has arrived! Now if we type `sound` again what do you think its value will be?
+
+Ok, the moment of suspense has arrived! Now if we type `sound` again what do you
+think its value will be?
 
 ...
 
@@ -171,15 +264,32 @@ sound
 # => "squeak"
 ```
 
-Hmmm... `sound` is still pointing to the original lowercased value. What does this tell us? When `upcase` did its thing to the variable, what MUST `sound` have handed over to `upcase` for us to see this result?
+Hmmm... `sound` is still pointing to the original _lowercased_ value. The
+`sound` variable remains unchanged here. When `sound.upcase` was called, `sound`
+provided its value to the `upcase` method to do its thing. In fact, it must
+have made a _copy of that value_ that `upcase` could operate on while still
+holding onto the original unaltered value. If this process did not happen the
+value 'squeak' wouldn't exist for us to look up and we'd only be able to see
+'SQUEAK'.
 
-Only it's *value*. In fact it must have made a *copy of that value* that `upcase` could operate on while still holding onto the original unaltered value. If this process did not happen the value 'squeak' wouldn't exist for us to look up and we'd only be able to see 'SQUEAK'.
+This is what we mean by pass-by-value. A variable makes a copy of the value it
+holds and passes the copy over to something else that alters or changes it. The
+alternative process is known as pass-by-reference. Here, changes to a variable
+would alter what is stored in the actual location it refers to. After the
+process was complete the variable would be holding a new and different value.
 
-This is what we mean by pass-by-value. A variable makes a copy of the value it holds and passes the copy over to something else that alters or changes it. The alternative process is known as pass-by-reference. Here, changes to a variable would alter what is stored in the actual location it refers to. After the process was complete the variable would be holding a new and different value.
+The practical result of pass-by-value is that we can perform operations on or
+involving a variable without altering its value. We typically have to use
+an equals sign to reassign variables (there are some data type methods that can
+still alter a variable if needed).
 
 ## Resources
 
-- [ZetCode Ruby Variables](http://zetcode.com/lang/rubytutorial/variables/)
-- [Wikibooks: Ruby Programming/Syntax/Variables and Constants](http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Variables_and_Constants)
+- [Intro to Variables Video][video]
+- [Wikibooks: Ruby Programming/Syntax/Variables and Constants][wikibook]
+
+[constant]: https://ruby-doc.org/core-2.5.0/File/Constants.html
+[wikibook]: http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Variables_and_Constants
+[video]: http://learn-co-videos.s3.amazonaws.com/ruby/about-variables-ruby.mp4
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/variable-readme'>About Variable Assignment</a> on Learn.co and start learning to code for free.</p>
