@@ -3,14 +3,14 @@
 ## Learning Goals
 
 - Define a variable
-- Create and reassign variables
+- Identify properties of variables
 - Define pass-by-value as it relates to variables
 
 ## Introduction
 
-In the previous lesson, we learned about the different data types we can
-use to represent information. We could, for instance, write the number
-10, and Ruby will recognize it as an Integer:
+Earlier, we learned about the different data types we can use to represent
+information. We could, for instance, write the number "10," and Ruby will
+recognize it as an Integer:
 
 ```ruby
 10
@@ -31,7 +31,7 @@ This is cool, but limited in functionality. We cannot reuse the value, `10`,
 that we've written. We can't access it later.
 
 Variables solve this problem. With variables, we can store data like numbers in
-barewords, allowing us to access them later. In this lesson, we're going to
+_barewords_, allowing us to access them later. In this lesson, we're going to
 introduce variables and some examples of how they are used. Use IRB in the
 terminal or Learn's IDE to follow along.
 
@@ -94,7 +94,9 @@ values. In algebra, however, variables are only placeholders for numbers. In
 Ruby, a variable can point to almost any type of value including numbers,
 strings, arrays, and hashes.
 
-## A Variable Has a Name
+## Identify Properties of Variables
+
+### A Variable Has a Name
 
 ```ruby
 i
@@ -145,7 +147,7 @@ like. It is often helpful, especially when working in a collaborative setting,
 to make sure your variable names are descriptive and indicative of what they are
 storing.
 
-## A Variable has a Value That Can Be Changed
+### A Variable has a Value That Can Be Changed
 
 A variable's name is like a label on a container. Its value is what is stored
 inside that container. The name points to the value. Above, `president`
@@ -169,7 +171,7 @@ Notice that the final equation, `first_number + second_number`, didn't change.
 With variables, we are able to assign and change the value without having to
 change the name.
 
-## A Variable has a Type That Can Be Changed As Well
+### A Variable has a Type That Can Be Changed As Well
 
 A variable's type is the type of the value it holds. Ruby is what is known as a
 _dynamically typed_ language. That means the value of a variable can change its
@@ -200,7 +202,7 @@ type.
 When you are building larger programs it is important to have in mind the type
 of the value that a variable refers to.
 
-## Variables Allow Us To Write Abstractly
+### Variables Allow Us To Write Abstractly
 
 Variable names can remain the same while their _values_ change. This enables a
 powerful programming tool: abstraction.
@@ -221,16 +223,7 @@ we've created a reusable _adding machine_. This example may seem trivial, but
 we can create much more complicated processes, all without having to know the
 exact data we're working with.
 
-## Conclusion
-
-Variables play a critical role in programming. They allow us to store data at a
-particular location and retrieve it later. Variables can be reassigned as
-needed, and can even change their data type in Ruby. There are some conventions
-we try to follow to make our code easier to understand, such as using
-`snake_case` as opposed to `camelCase`. Variables allow us to write complex
-processes without having to deal with the concrete data directly.
-
-## Bonus: Pass-By-Value
+## Bonus: Define Pass-by-Value as It Relates to Variables
 
 We have seen that the variable itself, the location where information is stored,
 is distinct from the value stored at that location. The variable `first_number`
@@ -282,6 +275,15 @@ The practical result of pass-by-value is that we can perform operations on or
 involving a variable without altering its value. We typically have to use
 an equals sign to reassign variables (there are some data type methods that can
 still alter a variable if needed).
+
+## Conclusion
+
+Variables play a critical role in programming. They allow us to store data at a
+particular location and retrieve it later. Variables can be reassigned as
+needed, and can even change their data type in Ruby. There are some conventions
+we try to follow to make our code easier to understand, such as using
+`snake_case` as opposed to `camelCase`. Variables allow us to write complex
+processes without having to deal with the concrete data directly.
 
 ## Resources
 
